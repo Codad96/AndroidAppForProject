@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     ArrayList<String> tempList;
+    ArrayList<String> timeList;
     ArrayAdapter<String> listAdapter;
     Handler mainHandler = new Handler();
     ProgressDialog progressDialog;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeTempList(){
         tempList = new ArrayList<>();
+        timeList = new ArrayList<>();
         listAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,tempList);
         binding.tempList.setAdapter(listAdapter);
 
@@ -80,18 +82,17 @@ public class MainActivity extends AppCompatActivity {
                     data = data + line;
                 }
 
-                if (!data.isEmpty()){
+                if (!data.isEmpty()) {
                     JSONObject jsonObject = new JSONObject(data);
                     JSONArray temps = jsonObject.getJSONArray("Temp");
                     tempList.clear();
 
-                for (int i = 0; i < temps.length(); i++){
-                    JSONObject tempObject = temps.getJSONObject(i);
-                    String Temp = tempObject.getString("tempReading");
-                    tempList.add(Temp);
-                }
-
-
+                    for (int i = 0; i < temps.length(); i++) {
+                        JSONObject tempObject = temps.getJSONObject(i);
+                        String Time = tempObject.getString("timeStamp");
+                        String Temp = tempObject.getString("tempReading");
+                        tempList.add("Temp " + (i + 1) + " = " + Temp + " Time: " + Time);
+                    }
                 }
             }
             catch (MalformedURLException e) {
