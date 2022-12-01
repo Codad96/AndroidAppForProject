@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">IFTP2New</string>
     <string name="temperature_readings">Temperature Readings</string>
     <string name="fetch_data">Fetch Data</string>
     <string name="show_graph">Show Graph</string>
