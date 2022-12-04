@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation">
+
+    <fragment
+        android:id="@+id/graphFragment"
+        android:name="com.example.iftp2new.GraphFragment"
+        android:label="fragment_graph"
+        tools:layout="@layout/fragment_graph" >
+        <action
+            android:id="@+id/action_graphFragment_to_monitorFragment"
+            app:destination="@id/monitorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/monitorFragment"
+        android:name="com.example.iftp2new.MonitorFragment"
+        android:label="fragment_monitor"
+        tools:layout="@layout/fragment_monitor" >
+        <action
+            android:id="@+id/action_monitorFragment_to_graphFragment"
+            app:destination="@id/graphFragment"
+            app:popUpTo="@id/monitorFragment" />
+        <action
+            android:id="@+id/action_monitorFragment_to_tempListFragment"
+            app:destination="@id/tempListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/tempListFragment"
+        android:name="com.example.iftp2new.tempListFragment"
+        android:label="fragment_temp_list"
+        tools:layout="@layout/fragment_temp_list" >
+        <action
+            android:id="@+id/action_tempListFragment_to_graphFragment"
+            app:destination="@id/graphFragment" />
+        <action
+            android:id="@+id/action_tempListFragment_to_monitorFragment"
+            app:destination="@id/monitorFragment" />
+    </fragment>
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/mainActivity">
+        <activity
+            android:id="@+id/mainActivity"
+            android:name="com.example.iftp2new.MainActivity"
+            android:label="activity_main"
+            tools:layout="@layout/activity_main" />
+        <action
+            android:id="@+id/action_global_monitorFragment2"
+            app:destination="@id/monitorFragment"
+            app:popUpTo="@id/mainActivity" />
+    </navigation>
+</navigation>
